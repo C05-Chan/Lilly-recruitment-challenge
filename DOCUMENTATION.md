@@ -17,7 +17,7 @@ https://www.shecodes.io/athena/3644-creating-a-dynamic-navigation-bar-with-html-
 
 devdocs
 ChatGPT
-
+W3 Schools
 
 ## Objectives - Innovative Solutions
 *For the challenge objectives, did you do anything in a particular way that you want to discuss? Is there anything you're particularly proud of that you want to highlight? Did you attempt some objectives multiple times, or go back and re-write particular sections of code? If so, why? Use this space to document any key points you'd like to tell us about.*

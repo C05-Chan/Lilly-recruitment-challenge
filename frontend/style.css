@@ -94,20 +94,63 @@ th {
     font-weight: bold;
 }
 
+/* Message when no data */
+#medicinesTable {
+    font-size: 16px;
+    color: #000000;
+}
+
+/* Search bar*/
+#searchContainer label {
+    margin-bottom: 10px;
+    font-weight: bold; 
+}
+
+#searchContainer input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+#searchContainer button {
+    padding: 10px 20px; 
+    background-color: #2f4f4f; 
+    color: white;
+    border-radius: 5px; 
+}
+
 /* Results */
 #searchResults {
     border-collapse: collapse;
     margin-top: 20px;
 }
 
-/* Message when no data */
-#medicinesList {
-    font-size: 16px;
-    color: #000000;
+/* Add  Medicine Form */
+#addMedicineForm label {
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 
+#addMedicineForm input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+#addMedicineForm button {
+    padding: 10px 20px; 
+    background-color: #2f4f4f; 
+    color: white; 
+    border-radius: 5px; 
+}
+
+#addMedicineForm button:hover {
+    background-color: #444;  
+}
 /* Hide the content sections initially */
-#addMedicineForm, #updateMedicineForm, #deleteMedicineForm {
+#searchContainer, #searchResults, #addMedicineForm, #updateMedicineForm, #deleteMedicineForm {
     display: none;
 }
 

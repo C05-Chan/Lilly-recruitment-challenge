@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Show form when 'Add Medicine' is clicked
     document.getElementById('addMedicine').addEventListener('click', function(event) {
         clearContent();  // Clear any previous content
         document.getElementById('addMedicineForm').style.display = 'block'; // Show search bar
@@ -37,10 +38,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Function to clear any content on the page (medicines list, search results)
 function clearContent() {
-    document.getElementById('medicinesTable').innerHTML = '';  // Clear the list of medicines
-    document.getElementById('searchResults').innerHTML = '';  // Clear any previous search results
-    document.getElementById('searchInput').value = '';  // Clear the search input field
+    // Clear the displayed medicines list
+    document.getElementById('medicinesTable').innerHTML = '';
+    // Clear the search results
+    document.getElementById('searchResults').innerHTML = '';
+    document.getElementById('searchResults').style.display = 'none'; // Hide search results section
+    // Clear input fields for search and add form
+    document.getElementById('searchInput').value = '';
+    document.getElementById('newMedicineName').value = '';
+    document.getElementById('newMedicinePrice').value = '';
+    // Hide any form or search container that might be visible
+    document.getElementById('searchContainer').style.display = 'none';
+    document.getElementById('addMedicineForm').style.display = 'none';
 }
+
 
 // Create a table from medicine data
 function createTable(medicines) {
@@ -103,13 +114,18 @@ function searchMedicine(query) {
         .catch(error => console.error('Error searching for medicine:', error));
 }
 
-function addMedicine(name, price){
-    fetch('http://localhost:8000/create'),
-
+function addMedicine(name, price) {
+    fetch('http://localhost:8000/create', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({ name, price }),
+    })
     .then(response => response.json())
     .then(data => {
-        alert(data.message);  // Show a message confirming the addition
-        clearContent();  // Optionally clear the form after adding
+        clearContent(); // Clear content before showing new medicine
+        searchMedicine(name); // Show the newly added medicine
     })
     .catch(error => console.error('Error adding medicine:', error));
 }
