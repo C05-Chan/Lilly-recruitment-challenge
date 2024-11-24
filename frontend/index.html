@@ -10,12 +10,57 @@
     <div class="disclaimer" id="disclaimer">
         Disclaimer: All medicine names and prices used in this application are fictional and do not represent any real medicine(s).
     </div>
+    
     <header>
         <h1>Medicine Tracker</h1>
     </header>
-    <main>
+    
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="#" id="showAll">Show All Medicines</a></li>
+                <li><a href="#" id="searchMedicine">Search Medicine</a></li>
+                <li><a href="#" id="addNew">Add New Medicine</a></li>
+                <li><a href="#" id="updateMedicine">Update Medicine</a></li>
+                <li><a href="#" id="deleteMedicine">Delete Medicine</a></li>
+            </ul>
+        </div>
+    
+        <main class="content">
+            <div id="medicinesTable">
+                <!-- Medicine will be displayed here -->
+            </div>
 
-    </main>
+            <!-- The search bar -->
+            <div id="searchContainer" style="display:none;">
+                <h2>Search for medicines:</h2>
+                <input type="text" id="searchInput" placeholder="Enter medicine name...">
+                <button id="searchButton">Search</button>
+            </div>
+    
+            <div id="searchResults" style="display:none;">
+                <!-- Search results will be displayed here -->
+            </div>
+            
+            <!-- Form to add new medicine -->
+            <div id="addMedicineForm" style="display:none;">
+                <h2>Add new medicine: </h2>
+                <input type="text" id="newMedicineName" placeholder="Enter medicine name...">
+                <input type="text" id="newMedicinePrice" placeholder="Enter medicine price...">
+                <button id="addButton">Add</button>
+            </div>
+    
+            <div id="updateMedicineForm" style="display:none;">
+                <!-- Form to update medicine -->
+            </div>
+    
+            <div id="deleteMedicineForm" style="display:none;">
+                <!-- Form to delete medicine -->
+            </div>
+        </main>
+    </div>
+    
+
     <script src="script.js"></script>
 </body>
 </html>

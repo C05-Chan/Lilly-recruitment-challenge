@@ -30,3 +30,84 @@ body {
 }
 
 /* ---- Your custom styles below ---- */
+/* Container for sidebar and main content */
+.container {
+    display: flex;  /* Use flexbox to create a side-by-side layout */
+    width: 100%;
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 250px; 
+    background-color: #2f4f4f;
+    color: white;
+    padding: 30px;
+    display: inline-block;
+    position: fixed; 
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.sidebar ul li a:hover {
+    background-color: #444;  
+}
+
+/* Main content area */
+.content {
+    margin-left: 250px; 
+    padding: 20px;
+    width: 100%;
+}
+    
+/* Table Style */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Arial', sans-serif;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid #000000;
+}
+
+/* Table Header Styling */
+th {
+    background-color: #2f4f4f;
+    color: white;
+    font-weight: bold;
+}
+
+/* Results */
+#searchResults {
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+/* Message when no data */
+#medicinesList {
+    font-size: 16px;
+    color: #000000;
+}
+
+/* Hide the content sections initially */
+#addMedicineForm, #updateMedicineForm, #deleteMedicineForm {
+    display: none;
+}
+
