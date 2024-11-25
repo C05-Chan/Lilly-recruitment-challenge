@@ -11,16 +11,16 @@ First Steps
 - Once I have created the sidebar I researched on how to do JavaScript and find a way to start a function when the link was clicked.
 
 Show All Medicine
-- When I have figured out how to use eventListener and Document Object Model (DOM) with the help of references I moved onto coding a addEventListener for "Show All medicine" which would call 'displayAllMedicines' function.
+- When I have figured out how to use eventListener and Document Object Model (DOM) with the help of references I moved onto coding a addEventListener for "Show All medicine" which would call `displayAllMedicines` function.
 - Used more chatGPT and other references to help understand how to use `fetch` command and coded the function.
 
 Tables
-- Saw the layout was a list so I decided to to make a function to make the output display as a table (function 'createTable'). I used a lot of W3 Schools, GeeksforGeeks and MDN Web Docs for table basic and tried to code it. When I did found some errors I asked chatGPT to resolve and explain.
+- Saw the layout was a list so I decided to to make a function to make the output display as a table (function `createTable`). I used a lot of W3 Schools, GeeksforGeeks and MDN Web Docs for table basic and tried to code it. When I did found some errors I asked chatGPT to resolve and explain.
 - I created a header row for the table and inputted cells for the header names and then assigned it to the row. Then looped round all the medicine to create a row and then created the cells to input the name and price. It checks that the price and name is not null or undefind, otherwise it will put N/A as the placeholder.
 
 Search Medicine
-- Designed the form for 'Search Medicine' with some help from W3 schools as I needed a slight jog of memory from first year on how to create input fields.
-- Repeated the process of creating an addEventListener for "Search Medicine" and then coded the 'searchForMedicine' function using pattern recognition from the 'displayAllMedicine' and what I had understood from the references.
+- Designed the form for `Search Medicine` with some help from W3 schools as I needed a slight jog of memory from first year on how to create input fields.
+- Repeated the process of creating an addEventListener for "Search Medicine" and then coded the `searchForMedicine` function using pattern recognition from the `displayAllMedicine` and what I had understood from the references.
 - Although I had to research how to get the input from the HTML and use it in my JavaScript.
 
 Clear Content
@@ -35,7 +35,7 @@ Adding New Medicine
 - Struggled with the `fetch` as it was not the same as before so I had to refer to the references and ChatGPT.
 
 Update and Delete Medicine
-- Copied the same search bar from search query and tried to use the same function from before to check if the medicine was in the database. However it didn't work so I created a new function called 'searchForMedicineToUpdateOrDelete', it basically does the same thing but checks if it would pop up the 'updateFields' for the price or the 'DeleteMedicineButton' if the medicine is found.
+- Copied the same search bar from search query and tried to use the same function from before to check if the medicine was in the database. However it didn't work so I created a new function called `searchForMedicineToUpdateOrDelete`, it basically does the same thing but checks if it would pop up the `updateFields` for the price or the `DeleteMedicineButton` if the medicine is found.
 - Validation is added to ensure that they are updating/ deleting a medicine that is actually in the database.
 - Did the same by addEventListener and coding the functions for both.
 
