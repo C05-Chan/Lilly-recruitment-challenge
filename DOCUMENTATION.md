@@ -5,66 +5,54 @@
 ***Not every section in this document is required. This is just a template to help get you started. Feel free to add or remove sections as you feel necessary.***
 
 ## Approach
-First Steps
-    - Thought about the layout I wanted to use and how I would tackle each objective.
-    - Looked for references to begin the HTML as I wanted to create a list in a sidebar and a container for the main outputs.
-    - Once I have created the sidebar I researched on how to do JavaScript and find a way to start a function when the link was clicked.
-Show All Medicine
-    - When I have figured out how to use eventListener and Document Object Model (DOM) with the help of references I moved onto coding a        
-    addEventListener for "Show All medicine" which would call 'displayAllMedicines' function
-    - Used more chatGPT and other references to help understand how to use `fetch` command and coded the function.
-Tables
-    - Saw the layout was a list so I decided to to make a function to make the output display as a table (function 'createTable'). I used a lot of 
-    W3 Schools, GeeksforGeeks and MDN Web Docs for table basic and tried to code it. When I did found some errors I asked chatGPT to resolve and 
-    explain.
-    - I created a header row for the table and inputted cells for the header names and then assigned it to the row. Then looped round all the 
-    medicine to create a row and then created the cells to input the name and price. It checks that the price and name is not null or undefind, 
-    otherwise it will put N/A as the placeholder.
-Search Medicine
-    - Designed the form for 'Search Medicine' with some help from W3 schools as I needed a slight jog of memory from first year on how to create 
-    input fields.
-    - Repeated the process of creating an addEventListener for "Search Medicine" and then coded the 'searchForMedicine' function using pattern  
-    recognition from the 'displayAllMedicine' and what I had understood from the references.
-    -  Although I had to research how to get the input from the HTML and use it in my JavaScript.
-Clear Content
-    - Realised that I need to clear the previous content, so I refered to webDocs and W3 School do understand how the display none/block works as 
-    well as the inner.HTML values.
-Adding New Medicine
-    - I did the same as before with creating a form addEventListener and coding the function
-    - The form, I had added validation to multiple things.
-        - Both fields has to be completed
-        - The price fields is limited to numbers and price
-        - Negative numbers can not be inputted
-    - Struggled with the `fetch` as it was not the same as before so I had to refer to the references and ChatGPT
-Update and Delete Medicine
-    - Copied the same search bar from search query and tried to use the same function from before to check if the medicine was in the database.     
-    However it didn't work so I created a new function called 'searchForMedicineToUpdateOrDelete', it basically does the same thing but checks if it 
-     would pop up  the 'updateFields' for the price or the 'DeleteMedicineButton' if the medicine is found
-    -Validation is added to ensure that they are updating/ deleting a medicine that is actually in the database.
-    - Did the same by addEventListener and coding the functions for both
-CSS
-    - Completed all the functions and decided to make the sidebars, tables, input fields and the buttons look nicer and less cramped. So I looked at 
-    some references and used past knowledge and made it look nicer.
+### First Steps
+- Thought about the layout I wanted to use and how I would tackle each objective.
+- Looked for references to begin the HTML as I wanted to create a list in a sidebar and a container for the main outputs.
+- Once I created the sidebar, I researched how to do JavaScript and find a way to start a function when the link was clicked.
 
-References:
-DevDocs – Quick reference for JavaScript and DOM manipulation.
-MDN Web Docs – Deep dive into JavaScript methods like fetch and DOM elements.
-W3Schools – Useful for HTML forms, CSS styling, and beginner-friendly examples.
-GeeksforGeeks – Resource for building tables and understanding event handling.
-ChatGPT – Helped debug issues, clarify concepts, and provide code explanations.
+### Show All Medicine
+- When I figured out how to use `addEventListener` and Document Object Model (DOM) with the help of references, I moved onto coding an `addEventListener` for "Show All Medicine," which would call the `displayAllMedicines` function.
+- Used more ChatGPT and other references to help understand how to use the `fetch` command and coded the function.
+### Tables
+- Saw the layout was a list, so I decided to make a function to display the output as a table (`createTable` function). I used references like W3Schools, GeeksforGeeks, and MDN Web Docs for table basics.
+- When I encountered errors, I asked ChatGPT to resolve and explain them.
+- Created a header row for the table, added cells for the header names, and assigned them to the row. Then looped through all the medicines to create rows and input cells for the name and price, using "N/A" for null or undefined values.
+### Search Medicine
+- Designed the form for "Search Medicine" with some help from W3Schools as I needed a refresher on creating input fields.
+- Repeated the process of creating an `addEventListener` for "Search Medicine" and coded the `searchForMedicine` function using patterns from `displayAllMedicine` and insights from references.
+- Researched how to get the input from HTML and use it in my JavaScript.
+### Clear Content
+- Realized I needed to clear the previous content, so I referred to webDocs and W3Schools to understand `display: none/block` and `innerHTML` values.
+### Adding New Medicine
+- Created a form and `addEventListener`, then coded the function for adding new medicine.
+- Added validation to ensure:
+  - Both fields are completed.
+  - The price field only accepts valid numbers.
+  - Negative numbers are not allowed.
+- Struggled with `fetch` differences and consulted references and ChatGPT for guidance.
+### Update and Delete Medicine
+- Adapted the search bar from "Search Medicine" and created a new function, `searchForMedicineToUpdateOrDelete`, since the original function did not work due to asynchronous issues.
+- Added validation to ensure actions apply only to medicines in the database.
+- Created `addEventListener` and coded functions for both update and delete actions.
+### CSS
+- Improved the appearance of sidebars, tables, input fields, and buttons by consulting references and using past knowledge.
+
+### References:
+- DevDocs: Quick reference for JavaScript and DOM manipulation.
+- MDN Web Docs: In-depth explanation of JavaScript methods like `fetch` and DOM elements.
+- W3Schools: Useful for HTML forms, CSS styling, and beginner-friendly examples.
+- GeeksforGeeks: Resource for building tables and understanding event handling.
+- ChatGPT: Helped debug issues, clarify concepts, and provide code explanations.
 
 ## Objectives - Innovative Solutions
-- The objectives were very broad, so I had a little trouble to understand what I really had to do.
-- I struggled a lot at coding this as I didn't have much experience 
-- Had to code some validation multiple times
-- Had  rewrite the update and functions multiple times
-
+- The objectives were broad, and I initially struggled to understand them.
+- I faced difficulties coding due to limited experience.
+- Validations had to be re-implemented multiple times.
+- Rewrote the update functions multiple times for accuracy.
 
 ## Problems Faced
-Update and Delete Medicine Search - Copied the same search bar from search query and tried to use the same function from before to check if the medicine was in the database. However from the references I learnt that the functions are asynchronous so it means that it would always return false before the fetch completes so I created a new function called 'searchForMedicineToUpdateOrDelete'.
-
-Time Constraint  - Completing the challenge within 60 minutes was too difficult as I did not have enough experience and had some trouble with the code.
-
+- **Update and Delete Medicine Search**: Learned about asynchronous behavior through references. Created a new function (`searchForMedicineToUpdateOrDelete`) to handle these issues.
+- **Time Constraint**: Completing the challenge within 60 minutes was difficult due to limited experience and coding challenges.
 
 ## Evaluation
 As I read through the README, I realised that this task was probably going to take more than the 60 minutes I had. I decided to keep going anyway because I wanted to give it my best shot. In the end, I ran out of time, and the challenge felt really difficult, especially trying to complete it within such a tight limit. However, I don't like to leave task undone, so I tried to complete it.
