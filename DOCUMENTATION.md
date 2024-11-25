@@ -24,7 +24,7 @@ Search Medicine
 - Although I had to research how to get the input from the HTML and use it in my JavaScript.
 
 Clear Content
-- Realised that I need to clear the previous content, so I refered to webDocs and W3 School do understand how the display none/block works as well as the inner.HTML values.
+- Realised that I need to clear the previous content, so I refered to webDocs and W3 School do understand how the `display: none/block` works as well as the `inner.HTML` values.
 
 Adding New Medicine
 - I did the same as before with creating a form `addEventListener` and coding the function.
