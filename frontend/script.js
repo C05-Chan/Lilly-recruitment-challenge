@@ -34,6 +34,50 @@ document.addEventListener('DOMContentLoaded', function() {
             addMedicine(medName, medPrice);  //Perform the add
         }
     });
+
+    // Show Update Medicine form when 'Update Medicine' is clicked
+    document.getElementById('updateMedicine').addEventListener('click', function() {
+        clearContent();  // Clear any previous content
+        document.getElementById('updateMedicineForm').style.display = 'block'; // Show the update form
+    });
+
+    // Handle the Find Medicine button click
+    document.getElementById('findUpdateMedicineButton').addEventListener('click', function() {
+        const medicineName = document.getElementById('medicineToUpdate').value.trim();
+        if (medicineName) {
+            searchMedicineUpdateDelete(medicineName, true);
+        }
+    });
+
+    document.getElementById('updatePriceButton').addEventListener('click', function() {
+        const newPrice = document.getElementById('newPrice').value.trim();
+        const medicineName = document.getElementById('medicineToUpdate').value.trim();
+
+        if (newPrice && medicineName) {
+            updateMedicinePrice(medicineName, newPrice)};
+    });
+
+    // Show Update Medicine form when 'Update Medicine' is clicked
+    document.getElementById('deleteMedicine').addEventListener('click', function() {
+        clearContent();  // Clear any previous content
+        document.getElementById('deleteMedicineForm').style.display = 'block'; // Show the update form
+    });
+
+    // Handle the Find Medicine button click
+    document.getElementById('findDeleteMedicineButton').addEventListener('click', function() {
+        const medicineName = document.getElementById('medicineToDelete').value.trim();
+        if (medicineName) {
+            searchMedicineUpdateDelete(medicineName, false);
+        }
+    });
+
+    document.getElementById('DeleteMedicineButton').addEventListener('click', function() {
+        const medicineName = document.getElementById('medicineToDelete').value.trim();
+
+        if (medicineName) {
+            deleteMedicine(medicineName)};
+    });
+
 });
 
 // Function to clear any content on the page (medicines list, search results)
@@ -50,6 +94,9 @@ function clearContent() {
     // Hide any form or search container that might be visible
     document.getElementById('searchContainer').style.display = 'none';
     document.getElementById('addMedicineForm').style.display = 'none';
+    document.getElementById('updateMedicineForm').style.display = 'none';
+    document.getElementById('updateFields').style.display = 'none';
+    document.getElementById('deleteMedicineForm').style.display = 'none';
 }
 
 
@@ -82,50 +129,138 @@ function createTable(medicines) {
 
 // Function to show all medicines
 function showAllMedicines() {
-    fetch('http://localhost:8000/medicines')
-        .then(response => response.json())
-        .then(data => {
-            const medicinesTable = document.getElementById('medicinesTable');
-            if (data.medicines && data.medicines.length > 0) {
-                const table = createTable(data.medicines);
-                medicinesTable.appendChild(table);
-            } else {
-                medicinesTable.textContent = 'No medicines available.';
-            }
-        })
-        .catch(error => console.error('Error fetching medicines:', error));
+    fetch('http://localhost:8000/medicines', {
+        method: 'GET'
+    })
+    .then(response => response.json())
+    .then(data => {
+        const medicinesTable = document.getElementById('medicinesTable');
+        if (data.medicines && data.medicines.length > 0) {
+            const table = createTable(data.medicines);
+            medicinesTable.appendChild(table);
+        } else {
+            medicinesTable.textContent = 'No medicines available.';
+        }
+    })
+    .catch(error => console.error('Error fetching medicines:', error));
 }
 
 // Function to perform a medicine search
 function searchMedicine(query) {
-    fetch(`http://localhost:8000/medicines/${query}`)
-        .then(response => response.json())
-        .then(data => {
-            const searchResults = document.getElementById('searchResults');
-            if (data && data.name) {  // If medicine found
-                const table = createTable([data]);  // Create table for a single medicine
-                searchResults.appendChild(table);
-                searchResults.style.display = 'block'; // Show the search results section
-            } else {
-                searchResults.textContent = 'No medicines found for that search.';
-                searchResults.style.display = 'block'; // Show the error message if no medicine found
-            }
-        })
-        .catch(error => console.error('Error searching for medicine:', error));
+    fetch(`http://localhost:8000/medicines/${query}`, {
+        method: 'GET' // Explicitly specify the GET method
+    })
+    .then(response => response.json())
+    .then(data => {
+        const searchResults = document.getElementById('searchResults');
+        if (data && data.name) {  // If medicine found
+            document.getElementById('searchResults').innerHTML = '';
+            const table = createTable([data]);  // Create table for a single medicine
+            searchResults.appendChild(table);
+            searchResults.style.display = 'block'; // Show the search results section
+        } else {
+            searchResults.textContent = 'No medicines found for that search.';
+            searchResults.style.display = 'block'; // Show the error message if no medicine found
+        }
+    })
+    .catch(error => console.error('Error searching for medicine:', error));
 }
+
 
 function addMedicine(name, price) {
     fetch('http://localhost:8000/create', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams({ name, price }),
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: new URLSearchParams({ name: String(name), price: String(price) }),
     })
     .then(response => response.json())
     .then(data => {
-        clearContent(); // Clear content before showing new medicine
-        searchMedicine(name); // Show the newly added medicine
+        if (data.message) {
+            alert(data.message);  // Success message from the backend
+            clearContent(); // Clear content before showing new medicine
+            showAllMedicines(); // Show the newly added medicine
+        } else {
+            alert(data.message);
+        }
     })
     .catch(error => console.error('Error adding medicine:', error));
 }
+
+// Function to search for a medicine specifically for the Update Medicine form
+function searchMedicineUpdateDelete(query,isUpdate) {
+    fetch(`http://localhost:8000/medicines/${query}`, {
+        method: 'GET' // Explicitly specify the GET method
+    })
+    .then(response => response.json())
+    .then(data => {
+        const searchResults = document.getElementById('searchResults');
+        const updateFields = document.getElementById('updateFields');
+        const deleteButton = document.getElementById('deleteButton');
+            
+        if (data && data.name) {  // If medicine is found
+            searchResults.innerHTML = '';  // Clear previous results
+            const table = createTable([data]);  // Create table for a single medicine
+            searchResults.appendChild(table);
+            searchResults.style.display = 'block'; // Show the search results section
+                
+            // Show the updateFields section for updating the price
+            if(isUpdate == true){
+                updateFields.style.display = 'block';
+            }else{
+                deleteButton.style.display = 'block';
+            };
+                
+        } else {
+            searchResults.textContent = 'No medicines found for that search.';
+            searchResults.style.display = 'block';  // Show the error message if no medicine found
+        }
+    })
+    .catch(error => console.error('Error searching for medicine:', error));
+}
+
+// Function to update the medicine price
+function updateMedicinePrice(medicineName, newPrice) {
+    fetch('http://localhost:8000/update', {  // Use /update endpoint here
+        method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: new URLSearchParams({name: medicineName, price: newPrice.toString()}),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message) {
+            alert(data.message);  // Success message from the backend
+            clearContent(); // Clear current content
+            showAllMedicines(); // Refresh the medicines list to show the updated price
+        } else {
+            alert(data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error updating medicine price:', error);
+        alert('An error occurred while updating the price. Please try again later.');
+    });
+}
+
+function deleteMedicine(name) {
+    fetch('http://localhost:8000/delete', {
+        method: 'DELETE',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: new URLSearchParams({ name: name }) 
+    })
+    .then(response => response.json()) 
+    .then(data => {
+        if (data.message) {
+            alert(data.message);  // Success message from the backend
+            clearContent(); // Clear the current content
+            showAllMedicines(); // Refresh the medicines list after deletion
+        } else {
+            alert('Failed to delete the medicine. Please try again later.');
+        }
+    })
+    .catch(error => {
+        console.error('Error deleting medicine:', error);
+        alert('An error occurred while deleting the medicine. Please try again later.');
+    });
+}
+
+

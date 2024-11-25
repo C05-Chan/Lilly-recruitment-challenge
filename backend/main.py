@@ -22,6 +22,8 @@ Run this module directly to start the FastAPI application.
 import uvicorn
 import json
 
+medFile = '/Users/crystalchan/lilly-recruitment-challenge/backend/data.json'
+
 app = FastAPI()
 
 app.add_middleware(
@@ -39,7 +41,7 @@ def get_all_meds():
     Returns:
         dict: A dictionary of all medicines
     """
-    with open('data.json') as meds:
+    with open(medFile) as meds:
         data = json.load(meds)
     return data
 
@@ -52,7 +54,7 @@ def get_single_med(name: str):
     Returns:
         dict: A dictionary containing the medicine details
     """
-    with open('data.json') as meds:
+    with open(medFile) as meds:
         data = json.load(meds)
         for med in data["medicines"]:
             print(med)
@@ -71,7 +73,7 @@ def create_med(name: str = Form(...), price: float = Form(...)):
     Returns:
         dict: A message confirming the medicine was created successfully.
     """
-    with open('data.json', 'r+') as meds:
+    with open(medFile, 'r+') as meds:
         current_db = json.load(meds)
         new_med = {"name": name, "price": price}
         current_db["medicines"].append(new_med)
@@ -92,7 +94,7 @@ def update_med(name: str = Form(...), price: float = Form(...)):
     Returns:
         dict: A message confirming the medicine was updated successfully.
     """
-    with open('data.json', 'r+') as meds:
+    with open(medFile, 'r+') as meds:
         current_db = json.load(meds)
         for med in current_db["medicines"]:
             if med['name'] == name:
@@ -113,7 +115,7 @@ def delete_med(name: str = Form(...)):
     Returns:
         dict: A message confirming the medicine was deleted successfully.
     """
-    with open('data.json', 'r+') as meds:
+    with open(medFile, 'r+') as meds:
         current_db = json.load(meds)
         for med in current_db["medicines"]:
             if med['name'] == name:

@@ -44,6 +44,13 @@ body {
     padding: 30px;
     display: inline-block;
     position: fixed; 
+    border-radius: 5px;
+
+}
+
+.sidebar h1{
+    margin-bottom: 5px;
+    text-align: center;
 }
 
 .sidebar ul {
@@ -149,6 +156,54 @@ th {
 #addMedicineForm button:hover {
     background-color: #444;  
 }
+
+/* Add  Medicine Form */
+#updateMedicineForm label {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+#updateMedicineForm input {
+    width: 50%;
+    padding: 5px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+#updateMedicineForm button {
+    padding: 10px 20px; 
+    background-color: #2f4f4f; 
+    color: white; 
+    border-radius: 5px; 
+}
+
+#updateMedicineForm button:hover {
+    background-color: #444;  
+}
+
+#deleteMedicineForm label {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+#deleteMedicineForm input {
+    width: 50%;
+    padding: 5px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+#deleteMedicineForm button {
+    padding: 10px 20px; 
+    background-color: #2f4f4f; 
+    color: white; 
+    border-radius: 5px; 
+}
+
+#deleteMedicineForm button:hover {
+    background-color: #444;  
+}
+
 /* Hide the content sections initially */
 #searchContainer, #searchResults, #addMedicineForm, #updateMedicineForm, #deleteMedicineForm {
     display: none;
